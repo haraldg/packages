@@ -71,11 +71,20 @@ define Package/lcdproc-server
   TITLE:=LCD Display server
 endef
 
+define LCDPROC_CORE_DRIVERS_TEXT
+bayrad CFontzPacket CFontz CwLnx ea65 EyeboxOne glk icp_a106 imonlcd imon irtrans joy lb216 lcdm001
+lcterm linux_input MD8800 ms6931 mtc_s16209x MtxOrb NoritakeVFD Olimex_MOD_LCD1x9 picolcd pyramid
+rawserial serialPOS serialVFD sli SureElec text tyan vlsys_m428 yard2LCD
+endef
+
+LCDPROC_CORE_DRIVERS = $(strip $(LCDPROC_CORE_DRIVERS_TEXT))
+
 define Package/lcdproc-server/description
 $(call Package/lcdproc/Default-description)
 
 This package contains the server and a core set of display drivers
-without external dependencies.
+without external dependencies:
+$(LCDPROC_CORE_DRIVERS_TEXT)
 endef
 
 define Package/lcdproc-server/conffiles
@@ -89,10 +98,17 @@ define Package/lcdproc-drivers
   DEPENDS:=+lcdproc-server +libncurses +libusb +libftdi
 endef
 
+define LCDPROC_OTHER_DRIVERS_TEXT
+curses glcd hd44780 IOWarrior shuttleVFD
+endef
+
+LCDPROC_OTHER_DRIVERS = $(strip $(LCDPROC_OTHER_DRIVERS_TEXT))
+
 define Package/lcdproc-drivers/description
 $(call Package/lcdproc/Default-description)
 
-This package contains display drivers with external dependencies.
+This package contains display drivers with external dependencies:
+$(LCDPROC_OTHER_DRIVERS_TEXT)
 endef
 
 
@@ -117,14 +133,14 @@ define Package/lcdproc-server/install
 	$(INSTALL_DIR) $(1)/usr/lib/lcdproc
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/LCDd $(1)/usr/sbin/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/drivers/linux_input.so $(1)/usr/lib/lcdproc/
+	$(CP) $(foreach driver,$(LCDPROC_CORE_DRIVERS),$(PKG_INSTALL_DIR)/usr/lib/$(driver).so) $(1)/usr/lib/lcdproc
 	$(INSTALL_CONF) $(PKG_BUILD_DIR)/LCDd.conf $(1)/etc/
 	$(INSTALL_BIN) ./files/LCDd $(1)/etc/init.d
 endef
 
 define Package/lcdproc-drivers/install
 	$(INSTALL_DIR) $(1)/usr/lib/lcdproc
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/drivers/*.so $(1)/usr/lib/lcdproc/
+	$(CP) $(foreach driver,$(LCDPROC_OTHER_DRIVERS),$(PKG_INSTALL_DIR)/usr/lib/$(driver).so) $(1)/usr/lib/lcdproc
 endef
 
 
