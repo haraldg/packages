@@ -98,34 +98,34 @@ endef
 
 
 define Build/Configure
-        $(call Build/Configure/Default,--disable-libX11 --disable-libhid --enable-drivers=all)
+	$(call Build/Configure/Default,--disable-libX11 --disable-libhid --enable-drivers=all)
 endef
 
 define Package/lcdproc-clients/install
-        $(INSTALL_DIR) $(1)/usr/bin
-        $(INSTALL_DIR) $(1)/etc/init.d
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/clients/lcdproc/lcdproc $(1)/usr/bin/
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/clients/lcdexec/lcdexec $(1)/usr/bin/
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/clients/lcdvc/lcdvc $(1)/usr/bin/
-        $(INSTALL_CONF) $(PKG_BUILD_DIR)/clients/lcdproc/lcdproc.conf $(1)/etc/
-        $(INSTALL_CONF) $(PKG_BUILD_DIR)/clients/lcdexec/lcdexec.conf $(1)/etc/
-        $(INSTALL_CONF) $(PKG_BUILD_DIR)/clients/lcdvc/lcdvc.conf $(1)/etc/
-        $(INSTALL_BIN) ./files/lcd* $(1)/etc/init.d
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/clients/lcdproc/lcdproc $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/clients/lcdexec/lcdexec $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/clients/lcdvc/lcdvc $(1)/usr/bin/
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/clients/lcdproc/lcdproc.conf $(1)/etc/
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/clients/lcdexec/lcdexec.conf $(1)/etc/
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/clients/lcdvc/lcdvc.conf $(1)/etc/
+	$(INSTALL_BIN) ./files/lcd* $(1)/etc/init.d
 endef
 
 define Package/lcdproc-server/install
-        $(INSTALL_DIR) $(1)/usr/sbin
-        $(INSTALL_DIR) $(1)/usr/lib/lcdproc
-        $(INSTALL_DIR) $(1)/etc/init.d
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/server/LCDd $(1)/usr/sbin/
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/server/drivers/linux_input.so $(1)/usr/lib/lcdproc/
-        $(INSTALL_CONF) $(PKG_BUILD_DIR)/LCDd.conf $(1)/etc/
-        $(INSTALL_BIN) ./files/LCDd $(1)/etc/init.d
+	$(INSTALL_DIR) $(1)/usr/sbin
+	$(INSTALL_DIR) $(1)/usr/lib/lcdproc
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/LCDd $(1)/usr/sbin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/drivers/linux_input.so $(1)/usr/lib/lcdproc/
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/LCDd.conf $(1)/etc/
+	$(INSTALL_BIN) ./files/LCDd $(1)/etc/init.d
 endef
 
 define Package/lcdproc-drivers/install
-        $(INSTALL_DIR) $(1)/usr/lib/lcdproc
-        $(INSTALL_BIN) $(PKG_BUILD_DIR)/server/drivers/*.so $(1)/usr/lib/lcdproc/
+	$(INSTALL_DIR) $(1)/usr/lib/lcdproc
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/drivers/*.so $(1)/usr/lib/lcdproc/
 endef
 
 
