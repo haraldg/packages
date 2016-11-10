@@ -45,7 +45,7 @@ endef
 
 
 define Package/lcdproc-clients
-  $(call Package/libelektra/Default)
+  $(call Package/lcdproc/Default)
   TITLE:=LCD Display clients
 endef
 
@@ -67,7 +67,7 @@ endef
 
 
 define Package/lcdproc-server
-  $(call Package/libelektra/Default)
+  $(call Package/liblcdproc/Default)
   TITLE:=LCD Display server
 endef
 
@@ -84,7 +84,7 @@ endef
 
 
 define Package/lcdproc-drivers
-  $(call Package/libelektra/Default)
+  $(call Package/lcdproc/Default)
   TITLE:=LCD Display extra drivers
   DEPENDS:=+lcdproc-server +libncurses +libusb +libftdi
 endef
