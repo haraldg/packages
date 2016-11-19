@@ -67,7 +67,7 @@ endef
 
 
 define Package/lcdproc-server
-  $(call Package/liblcdproc/Default)
+  $(call Package/lcdproc/Default)
   TITLE:=LCD Display server
 endef
 
@@ -95,7 +95,7 @@ endef
 define Package/lcdproc-drivers
   $(call Package/lcdproc/Default)
   TITLE:=LCD Display extra drivers
-  DEPENDS:=+lcdproc-server +libncurses +libusb +libftdi +libugpio
+  DEPENDS:=+lcdproc-server +libncurses +libusb +libftdi +@GPIO_SUPPORT:libugpio
 endef
 
 define LCDPROC_OTHER_DRIVERS_TEXT
