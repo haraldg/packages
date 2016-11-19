@@ -73,7 +73,7 @@ endef
 
 define LCDPROC_CORE_DRIVERS_TEXT
 bayrad CFontzPacket CFontz CwLnx ea65 EyeboxOne glk icp_a106 imonlcd imon irtrans joy lb216 lcdm001
-lcterm linux_input MD8800 ms6931 mtc_s16209x MtxOrb NoritakeVFD Olimex_MOD_LCD1x9 picolcd pyramid
+lcterm linux_input MD8800 ms6931 mtc_s16209x MtxOrb NoritakeVFD Olimex_MOD_LCD1x9 pyramid
 rawserial serialPOS serialVFD sli SureElec text tyan vlsys_m428 yard2LCD
 endef
 
@@ -99,7 +99,7 @@ define Package/lcdproc-drivers
 endef
 
 define LCDPROC_OTHER_DRIVERS_TEXT
-curses glcd hd44780 IOWarrior shuttleVFD
+curses glcd hd44780 IOWarrior picolcd shuttleVFD
 endef
 
 LCDPROC_OTHER_DRIVERS = $(strip $(LCDPROC_OTHER_DRIVERS_TEXT))
