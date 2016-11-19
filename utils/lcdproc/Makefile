@@ -25,7 +25,7 @@ PKG_RELEASE:=1
 # Use this to test versions still under development
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/haraldg/lcdproc.git
-PKG_SOURCE_VERSION:=f4c5141560949ac7a4433461214f5e07129374b9
+PKG_SOURCE_VERSION:=9f5641c99ca08d1276b528da9970aa34100a3f09
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.gz
 PKG_FIXUP:=autoreconf
@@ -95,7 +95,7 @@ endef
 define Package/lcdproc-drivers
   $(call Package/lcdproc/Default)
   TITLE:=LCD Display extra drivers
-  DEPENDS:=+lcdproc-server +libncurses +libusb +libftdi
+  DEPENDS:=+lcdproc-server +libncurses +libusb +libftdi +libugpio
 endef
 
 define LCDPROC_OTHER_DRIVERS_TEXT
