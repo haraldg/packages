@@ -133,14 +133,14 @@ define Package/lcdproc-server/install
 	$(INSTALL_DIR) $(1)/usr/lib/lcdproc
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/server/LCDd $(1)/usr/sbin/
-	$(CP) $(foreach driver,$(LCDPROC_CORE_DRIVERS),$(PKG_INSTALL_DIR)/usr/lib/$(driver).so) $(1)/usr/lib/lcdproc
+	$(CP) $(foreach driver,$(LCDPROC_CORE_DRIVERS),$(PKG_BUILD_DIR)/server/drivers/$(driver).so) $(1)/usr/lib/lcdproc
 	$(INSTALL_CONF) $(PKG_BUILD_DIR)/LCDd.conf $(1)/etc/
 	$(INSTALL_BIN) ./files/LCDd $(1)/etc/init.d
 endef
 
 define Package/lcdproc-drivers/install
 	$(INSTALL_DIR) $(1)/usr/lib/lcdproc
-	$(CP) $(foreach driver,$(LCDPROC_OTHER_DRIVERS),$(PKG_INSTALL_DIR)/usr/lib/$(driver).so) $(1)/usr/lib/lcdproc
+	$(CP) $(foreach driver,$(LCDPROC_OTHER_DRIVERS),$(PKG_BUILD_DIR)/server/drivers/$(driver).so) $(1)/usr/lib/lcdproc
 endef
 
 
