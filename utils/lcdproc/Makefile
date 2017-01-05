@@ -14,21 +14,21 @@ PKG_MAINTAINER:=Harald Geyer <harald@ccbib.org>
 PKG_NAME:=lcdproc
 PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=COPYING
-PKG_VERSION:=0.5dev
+PKG_VERSION:=0.5.8
 PKG_RELEASE:=1
 
 # Use this for official releasees
-#PKG_MD5SUM:=62fe0fbf9ee57ffaa58a982f602f596a
-#PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-#PKG_SOURCE_URL:=
+PKG_MD5SUM:=d01cc4eab61d0c08a870b08f7dde417822d3301c
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)rc1.tar.gz
+PKG_SOURCE_URL:=https://github.com/lcdproc/lcdproc/releases/download/v$(PKG_VERSION)rc1/
 
 # Use this to test versions still under development
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/haraldg/lcdproc.git
-PKG_SOURCE_VERSION:=9f5641c99ca08d1276b528da9970aa34100a3f09
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.gz
-PKG_FIXUP:=autoreconf
+#PKG_SOURCE_PROTO:=git
+#PKG_SOURCE_URL:=https://github.com/lcdproc/lcdproc.git
+#PKG_SOURCE_VERSION:=9f5641c99ca08d1276b528da9970aa34100a3f09
+#PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+#PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_VERSION).tar.gz
+#PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -99,7 +99,7 @@ define Package/lcdproc-drivers
 endef
 
 define LCDPROC_OTHER_DRIVERS_TEXT
-curses glcd hd44780 IOWarrior picolcd shuttleVFD
+curses futaba glcd hd44780 IOWarrior picolcd shuttleVFD
 endef
 
 LCDPROC_OTHER_DRIVERS = $(strip $(LCDPROC_OTHER_DRIVERS_TEXT))
