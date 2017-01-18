@@ -18,9 +18,9 @@ PKG_VERSION:=0.5.8
 PKG_RELEASE:=1
 
 # Use this for official releasees
-PKG_MD5SUM:=d01cc4eab61d0c08a870b08f7dde417822d3301c
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)rc1.tar.gz
-PKG_SOURCE_URL:=https://github.com/lcdproc/lcdproc/releases/download/v$(PKG_VERSION)rc1/
+PKG_MD5SUM:=1dd25676946c61184c6f51cc0a75379e
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)rc2.tar.gz
+PKG_SOURCE_URL:=https://github.com/lcdproc/lcdproc/releases/download/v$(PKG_VERSION)rc2/
 
 # Use this to test versions still under development
 #PKG_SOURCE_PROTO:=git
@@ -69,6 +69,7 @@ endef
 define Package/lcdproc-server
   $(call Package/lcdproc/Default)
   TITLE:=LCD Display server
+  DEPENDS:=+libpthread
 endef
 
 define LCDPROC_CORE_DRIVERS_TEXT
@@ -95,7 +96,7 @@ endef
 define Package/lcdproc-drivers
   $(call Package/lcdproc/Default)
   TITLE:=LCD Display extra drivers
-  DEPENDS:=+lcdproc-server +libncurses +libusb +libftdi +@GPIO_SUPPORT:libugpio
+  DEPENDS:=+lcdproc-server +libncurses +libusb-1.0 +libusb-compat +libftdi +@GPIO_SUPPORT:libugpio
 endef
 
 define LCDPROC_OTHER_DRIVERS_TEXT
